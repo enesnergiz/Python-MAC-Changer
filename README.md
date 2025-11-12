@@ -1,14 +1,42 @@
-# Python-MAC-Changer
-A simple Python tool to change the MAC address of your network interface for privacy and security purposes. (Türkçesi: Ağ arayüzünüzün MAC adresini gizlilik ve güvenlik amacıyla değiştiren basit bir Python aracı.)
+# Python-MAC-Değiştirici
 
+Gizlilik ve güvenlik amacıyla ağ arayüzünüzün MAC adresini değiştirmek için basit bir Python aracı.  
+*(English: A simple Python tool to change your network interface's MAC address for privacy and security.)*
+
+---
+
+##  Kullanım
+
+1. Terminali aç ve bu dizine git:
+   ```bash
+   cd Python-MAC-Değiştirici
+   ```
+
+2. Komutu çalıştır:
+   ```bash
+   sudo python3 mac_changer.py -i eth0 -m 00:11:22:33:44:55
+   ```
+
+3. Örnek çıktı:
+   ```
+   MyMacChanger started!
+   [+] Changing MAC address of eth0 to 00:11:22:33:44:55
+   [+] Success! New MAC address: 00:11:22:33:44:55
+   ```
+
+---
+
+##  Kod
+
+```python
 import subprocess
 import optparse
 import re
 
 def get_user_input():
     parse_object = optparse.OptionParser()
-    parse_object.add_option("-i", "--interface", dest="interface", help="Interface to change!")
-    parse_object.add_option("-m", "--mac", dest="mac_address", help="New MAC address")
+    parse_object.add_option("-i", "--interface", dest="interface", help="Değiştirilecek arayüz!")
+    parse_object.add_option("-m", "--mac", dest="mac_address", help="Yeni MAC adresi")
     (user_input, arguments) = parse_object.parse_args()
 
     if not user_input.interface:
@@ -43,3 +71,25 @@ if finalized_mac == user_input.mac_address:
     print(f"[+] Success! New MAC address: {finalized_mac}")
 else:
     print("[-] Error: MAC address did not change.")
+```
+
+---
+
+##  Uyarılar
+- Bu script sadece **Linux** sistemlerde test edilmiştir.  
+- Komutları **root (sudo)** yetkisiyle çalıştırmanız gerekir.  
+- Yalnızca **etik (ethical hacking)** ve **öğrenme amaçlı** kullanılmalıdır.  
+
+---
+
+##  Yazar
+**Enes Nergiz**  
+Bilgisayar Mühendisliği Öğrencisi | Siber Güvenlik ve Ağ Meraklısı  
+ İletişim: [energiz2310@gmail.com]  
+ GitHub: [https://github.com/enesnergiz](https://github.com/enesnergiz)
+
+---
+
+##  Etiketler
+`python` `network` `mac-changer` `cybersecurity` `linux` `ethical-hacking`
+
